@@ -1,6 +1,7 @@
 import React, {useId} from 'react'
 
 function InputBox({
+    //These are the props being passed to the InputBox component. Each prop corresponds to a specific aspect of the input box component.
     label,
     amount,
     onAmountChange,
