@@ -10,8 +10,10 @@ function App() {
   const [to, setTo] = useState("inr")
   const [convertedAmount, setConvertedAmount] = useState(0)
 
+  //This will give 1 usd = kitna currency
   const currencyInfo = useCurrencyInfo(from)
 
+  //give only keys from data
   const options = Object.keys(currencyInfo)
 
   const swap = () => {
