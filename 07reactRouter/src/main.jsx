@@ -9,7 +9,7 @@ import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import User from './components/User/User.jsx'
 import Github, { githubInfoLoader } from './components/Github/Github.jsx'
-
+//another way of creating routes
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -31,15 +31,18 @@ import Github, { githubInfoLoader } from './components/Github/Github.jsx'
 //   }
 // ])
 
+//router created from createBrowserRouter
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
+    <Route path='/' element={<Layout />}>//main route
+
+      ///nested routes --further nesting can be possible
       <Route path='' element={<Home />} />
       <Route path='about' element={<About />} />
       <Route path='contact' element={<Contact />} />
       <Route path='user/:userid' element={<User />} />
       <Route 
-      loader={githubInfoLoader}
+      loader={githubInfoLoader}//this method is used to fetch data from api
       path='github' 
       element={<Github />}
        />
