@@ -7,7 +7,7 @@ function Layout() {
   return (
     <>
     <Header/>
-    <Outlet />
+    <Outlet />//Only components in outlet gonna change remaining will stay same when rendering
     <Footer />
     </>
   )
