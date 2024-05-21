@@ -5,19 +5,22 @@ import TodoForm from './components/TodoForm'
 import TodoItem from './components/TodoItem'
 
 function App() {
+  //todos array and method, we set initial state to empty array
   const [todos, setTodos] = useState([])
 
+  //functionalities 
   const addTodo = (todo) => {
+    //given the current to message throgh prop, id and spread prev array
     setTodos((prev) => [{id: Date.now(), ...todo}, ...prev] )
   }
 
   const updateTodo = (id, todo) => {
+    //taking id of prev todo and update it
     setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo )))
-
-    
   }
 
   const deleteTodo = (id) => {
+    //here we are setting todos excluding the id we given
     setTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
 
@@ -25,18 +28,20 @@ function App() {
     //console.log(id);
     setTodos((prev) => 
     prev.map((prevTodo) => 
-      prevTodo.id === id ? { ...prevTodo, 
+      prevTodo.id === id ? { ...prevTodo, //here in object we put all the object except updated just completed field
         completed: !prevTodo.completed } : prevTodo))
   }
 
-  useEffect(() => {
+  useEffect(() => { 
+    //get the todos state converted to json and save to variable
     const todos = JSON.parse(localStorage.getItem("todos"))
-
+//if length of todos array is greater than 0 then we setTodos(todos) 
     if (todos && todos.length > 0) {
       setTodos(todos)
     }
   }, [])
 
+  //Runs when there is a change in todos state
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
